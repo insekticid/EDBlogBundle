@@ -25,14 +25,10 @@
 
     {# We merge several css files into 1, and that way we reduce number of calls during page rendering #}
     {# EdBlog css files #}
-    {% block stylesheets %}
-      {% stylesheets filter="cssrewrite"
-        'bundles/edblog/css/bootstrap.css'
-        'bundles/edblog/css/main.min.blessed.css'
-      %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-      {% endstylesheets %}
-    {% endblock %}
+      {% block stylesheets %}
+          <link rel="stylesheet" href="/bundles/edblog/css/bootstrap.css" />
+          <link rel="stylesheet" href="/bundles/edblog/css/main.min.blessed.css" />
+      {% endblock %}
 
     {# Fonts #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -49,6 +45,7 @@
       <div class="flash">
         {{ include('EDBlogBundle:Utils:flash_message.html.twig') }}
       </div>
+
     {% endblock %}
 
     {% block modals %}
@@ -58,25 +55,22 @@
 
     {% block javascripts %}
 
-      {% javascripts
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/bootstrap.min.js'
+        {% for item in [
+        '/bundles/edblog/js/vendor/jquery.min.js',
+        '/bundles/edblog/js/vendor/bootstrap.min.js',
 
-        '@EDBlogBundle/Resources/public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/retina-1.1.0.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/imagesloaded.pkgd.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/isotope.pkgd.min.js'
+        '/bundles/edblog/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js',
+        '/bundles/edblog/js/vendor/retina-1.1.0.min.js',
+        '/bundles/edblog/js/vendor/imagesloaded.pkgd.min.js',
+        '/bundles/edblog/js/vendor/isotope.pkgd.min.js',
 
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.ui.widget.js'
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.fileupload.js'
+        '/bundles/edblog/js/vendor/jquery.ui.widget.js',
+        '/bundles/edblog/js/vendor/jquery.fileupload.js',
 
-        '@EDBlogBundle/Resources/public/js/fe-general.js'
-        '@EDBlogBundle/Resources/public/js/frontend.js'
-      %}
-      <script type="text/javascript" src="{{ asset_url }}"></script>
-      {% endjavascripts %}
-
-
+        '/bundles/edblog/js/fe-general.js',
+        '/bundles/edblog/js/frontend.js'] %}
+            <script type="text/javascript" src="{{ item }}"></script>
+        {% endfor %}
 
     {% endblock %}
 

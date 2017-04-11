@@ -28,16 +28,16 @@
     {# EdBlog css files #}
 
     {% block stylesheets %}
-      {% stylesheets filter="cssrewrite"
-          'bundles/edblog/css/pnotify.custom.min.css'
-          'bundles/edblog/css/jquery.Jcrop.css'
-          'bundles/edblog/css/nprogress.css'
-          'bundles/edblog/css/bootstrap.css'
-          'bundles/edblog/css/main.min.blessed.css'
-          'bundles/edblog/css/bootstrap-tagsinput.css'
+      {% for item in [
+          '/bundles/edblog/css/pnotify.custom.min.css',
+          '/bundles/edblog/css/jquery.Jcrop.css',
+          '/bundles/edblog/css/nprogress.css',
+          '/bundles/edblog/css/bootstrap.css',
+          '/bundles/edblog/css/main.min.blessed.css',
+          '/bundles/edblog/css/bootstrap-tagsinput.css']
       %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-      {% endstylesheets %}
+        <link rel="stylesheet" href="{{ item }}" />
+      {% endfor %}
     {% endblock %}
 
     {# Fonts #}
@@ -61,31 +61,28 @@
     {% endblock modals %}
 
     {% block javascripts %}
+    {% for item in [
+        '/bundles/edblog/js/vendor/jquery.min.js',
+        '/bundles/edblog/js/vendor/bootstrap.min.js',
 
-      {% javascripts
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/bootstrap.min.js'
+        '/bundles/edblog/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js',
+        '/bundles/edblog/js/vendor/retina-1.1.0.min.js',
+        '/bundles/edblog/js/vendor/imagesloaded.pkgd.min.js',
+        '/bundles/edblog/js/vendor/isotope.pkgd.min.js',
+        '/bundles/edblog/js/vendor/bootstrap-tagsinput.min.js',
+        '/bundles/edblog/js/vendor/jquery.autocomplete.js',
 
-        '@EDBlogBundle/Resources/public/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/retina-1.1.0.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/imagesloaded.pkgd.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/isotope.pkgd.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/bootstrap-tagsinput.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.autocomplete.js'
+        '/bundles/edblog/js/vendor/jquery.ui.widget.js',
+        '/bundles/edblog/js/vendor/jquery.fileupload.js',
+        '/bundles/edblog/js/vendor/nprogress.js',
+        '/bundles/edblog/js/vendor/jquery.Jcrop.min.js',
+        '/bundles/edblog/js/vendor/pnotify.custom.min.js',
 
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.ui.widget.js'
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.fileupload.js'
-        '@EDBlogBundle/Resources/public/js/vendor/nprogress.js'
-        '@EDBlogBundle/Resources/public/js/vendor/jquery.Jcrop.min.js'
-        '@EDBlogBundle/Resources/public/js/vendor/pnotify.custom.min.js'
-
-        '@EDBlogBundle/Resources/public/js/general.js'
-        '@EDBlogBundle/Resources/public/js/frontend.js'
-        '@EDBlogBundle/Resources/public/js/ed_autocomplete.js'
-
-      %}
-      <script type="text/javascript" src="{{ asset_url }}"></script>
-      {% endjavascripts %}
+        '/bundles/edblog/js/general.js',
+        '/bundles/edblog/js/frontend.js',
+        '/bundles/edblog/js/ed_autocomplete.js'] %}
+      <script type="text/javascript" src="{{ item }}"></script>
+        {% endfor %}
 
       <script src="/bundles/edblog/js/tinymce/tinymce.min.js"></script>
 
